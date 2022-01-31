@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Knit Camp Sweater Calculator</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Make sure you soak and block your swatch first!</h2>
+    <p>Finished bust measurement from pattern (inches): </p>
+    <input type="text" id="bust" />
+    <p>Pattern stitch gauge per 4 inches: </p>
+    <input type="text" id="pattern_gauge" />
+    <p>YOUR bust size (inches): </p>
+    <input type="text" id="user_bust" />
+    <p>YOUR stitch gauge per 4 inches: </p>
+    <input type="text" id="user_gauge">
+    <br />
+    <br />
+    <button onclick="calculate()">Do the math</button>
+    <h2 id="result"></h2>
+  </div>
+  <script>
+    function calculate() {
+      var bust_measurement, pattern_gauge, user_bust, ease, ease_type, user_gauge, pattern_inch, user_inch, stitch_count, user_size, final_size, difference, change;
+      bust_measurement = document.getElementById("bust").value;
+      pattern_gauge = document.getElementById("pattern_gauge").value;
+      user_bust = document.getElementById("user_bust").value;
+      user_gauge = document.getElementById("user_gauge").value;
+      pattern_inch = pattern_gauge / 4;
+      user_inch = user_gauge / 4;
+      stitch_count = bust_measurement * pattern_inch;
+      user_size = stitch_count / user_inch;
+      difference = Math.abs((bust_measurement - user_size).toFixed(2));
+      if (user_size < bust_measurement) {
+        final_size = "about " + difference + " inches smaller than "
+        change = " If that's not close enough to what you want, try using a larger needle to get gauge, or plan to knit a larger size of the pattern."
+      } else if (user_size > bust_measurement) {
+        final_size = "about " + difference + " inches larger than "
+        change = " If that's not close enough to what you want, try using a smaller needle to get gauge, or plan to knit a smaller size of the pattern."
+      } else {
+        final_size = "the same as "
+        change = ""
+      }
+      ease = user_size - user_bust
+      ease = ease.toFixed(2)
+      if (user_size < user_bust) {
+        ease_type = "negative"
+      } else if (user_size > user_bust) {
+        ease_type = "positive"
+      } else {
+        ease_type = "none"
+      }
+      
+      if (ease_type != "none") {
+        document.getElementById("result").innerHTML = "With your    gauge, your sweater will be " + final_size + "the pattern \(" + user_size.toFixed(2) + " inches\). This gives you " + ease + " inches of " + ease_type + " ease." + change;
+      } else {
+        document.getElementById("result").innerHTML = "With your gauge, your sweater will be " + final_size + "the pattern \(" + user_size.toFixed(2) + " inches\)." + change;
+      }
+    }
+  </script>
+</body>
+
+</html>

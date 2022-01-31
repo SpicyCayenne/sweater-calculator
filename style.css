@@ -1,0 +1,16 @@
+body {
+  background: #dddddd;
+}
+
+.container {
+  margin: auto;
+  width: 50vw;
+  left: 25%;
+  text-align: center;
+}
+
+.container h3 {
+  color: red;
+  width: 75%;
+  margin: auto;
+}
