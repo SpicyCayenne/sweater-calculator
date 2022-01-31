@@ -1,16 +1,138 @@
 body {
-  background: #dddddd;
+  background-color: #132A13;
+  color: #3C153B;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .container {
-  margin: auto;
+  position: relative;
+  display: grid;
+  flex-direction: column;
+  top: 4vh;
   width: 50vw;
-  left: 25%;
+  height: 100%;
+  margin: auto;
   text-align: center;
+  background-color: #89bd9e;
+  padding: 2vh;
+  border-radius: 1em;
+  font-size: 1.5vw;
 }
 
-.container h3 {
-  color: red;
+#pattern_info {
+  display: flex;
+  flex-direction: column;
+}
+
+#user_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.container input {
+  margin: 0 auto 3vh auto;
   width: 75%;
-  margin: auto;
+  font-size: 3vmin;
+  border-radius: .5em;
+}
+
+.container button {
+  width: fit-content;
+  margin: 2vh auto;
+  font-size: 3vmin;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+@media (max-width: 425px) {
+  .container {
+    width: 90%;
+    font-size: 5vmin;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #grid_wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #pattern_info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #user_info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container input {
+    font-size: 5vmin;
+  }
+
+  .container button {
+    font-size: 5vmin;
+  }
+}
+
+@media (min-width: 426px) AND (max-width: 1370px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  #grid_wrap {
+    width: 90%;
+    top: 5vh;
+    font-size: 2vw;
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "pattern_info user_info"
+      "footer footer";
+  }
+
+  #grid_wrap div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-self: center;
+  }
+
+  #grid_wrap h2 {
+    grid-area: header;
+  }
+
+  #pattern_info {
+    grid-area: pattern_info;
+  }
+
+  #user_info {
+    grid-area: user_info;
+  }
+
+  #footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #grid_wrap input {
+    font-size: 3vw;
+    width: fit-content;
+  }
+
+  #grid_wrap label {
+    font-size: 2.5vw;
+    width: fit-content;
+  }
+
+  #grid_wrap p {
+    font-size: 3vw;
+  }
 }
